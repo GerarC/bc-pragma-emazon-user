@@ -1,0 +1,22 @@
+spring:
+    datasource:
+        url: ${SPRING_STOCK_DATASOURCE_URL:jdbc:mysql://localhost:3309/user}
+        username: ${SPRING_STOCK_DATASOURCE_USERNAME:root}
+        password: ${SPRING_STOCK_DATASOURCE_PASSWORD:password}
+        driver-class-name: com.mysql.cj.jdbc.Driver
+
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: true
+
+logging:
+    level:
+        web: trace
+        org:
+            springframework:
+                web: trace
+
+jwt:
+    secret_key: 11d6f32f9cbe748562fadb715b563784e102bbde9495395ff6d8ae368118fe9b
+    expiration_time: 144000
