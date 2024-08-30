@@ -11,8 +11,8 @@ import org.springframework.context.annotation.Configuration;
 public class OpenApiConfiguration {
     @Bean
     public OpenAPI customOpenAPI(
-            @Value("${appDescription}") String appDescription,
-            @Value("${appVersion}") String appVersion
+            @Value("${app.description}") String appDescription,
+            @Value("${app.version}") String appVersion
                                  ) {
         return new OpenAPI()
                 .info(new Info()

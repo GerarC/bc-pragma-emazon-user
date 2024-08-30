@@ -2,9 +2,14 @@ package com.emazon.user.adapters.driven.jpa.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -13,23 +18,23 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UserEntity implements Serializable{
+public class UserEntity implements Serializable, UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "user_id")
     private String id;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "lastname")
+    @Column(name = "lastname", nullable = false)
     private String lastname;
 
-    @Column(name = "identity_document")
+    @Column(name = "identity_document", nullable = false)
     private String identityDocument;
 
-    @Column(name = "birthday")
-    private LocalDateTime birthday;
+    @Column(name = "birthdate", nullable = false)
+    private LocalDateTime birthdate;
 
     @Column(name = "phone_number")
     private String phone;
@@ -40,7 +45,19 @@ public class UserEntity implements Serializable{
     @Column(name = "password")
     private String password;
 
-    @ManyToOne
+    @ManyToOne(cascade = {
+            CascadeType.MERGE,
+    })
     @JoinColumn(name="role_id", referencedColumnName = "role_id")
     private RoleEntity role;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority("ROLE_" + getRole().getRoleName().name()));
+    }
+
+    @Override
+    public String getUsername() {
+        return "";
+    }
 }

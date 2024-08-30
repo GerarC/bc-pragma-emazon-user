@@ -13,6 +13,7 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 @Builder
 public class RoleEntity implements Serializable {
     @Id
@@ -20,6 +21,6 @@ public class RoleEntity implements Serializable {
     @Column(name = "role_id")
     private Long id;
 
-    @Column(name = "role_name")
+    @Column(name = "role_name", unique = true, nullable = false)
     private RoleName roleName;
 }

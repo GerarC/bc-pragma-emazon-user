@@ -4,5 +4,6 @@ spring:
     profiles:
         active: local
 
-appDescription: "Emazon's user Microservice API"
-appVersion: "0.0.1"
+app:
+    description: "Emazon's User Microservice API"
+    version: "0.0.1"

@@ -20,3 +20,10 @@ logging:
 jwt:
     secret_key: 11d6f32f9cbe748562fadb715b563784e102bbde9495395ff6d8ae368118fe9b
     expiration_time: 144000
+
+server:
+    port: 8090
+
+allowed-origins:
+    http://localhost:3000/,
+    *,

@@ -7,18 +7,18 @@ public class User {
     private String name;
     private String lastname;
     private String identityDocument;
-    private LocalDateTime birthday;
+    private LocalDateTime birthdate;
     private String phone;
     private String email;
     private String password;
     private Role role;
 
-    public User(String id, String name, String lastname, String identityDocument, LocalDateTime birthday, String phone, String email, String password, Role role) {
+    public User(String id, String name, String lastname, String identityDocument, LocalDateTime birthdate, String phone, String email, String password, Role role) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;
         this.identityDocument = identityDocument;
-        this.birthday = birthday;
+        this.birthdate = birthdate;
         this.phone = phone;
         this.email = email;
         this.password = password;
@@ -60,12 +60,12 @@ public class User {
         this.identityDocument = identityDocument;
     }
 
-    public LocalDateTime getBirthday() {
-        return birthday;
+    public LocalDateTime getBirthdate() {
+        return birthdate;
     }
 
-    public void setBirthday(LocalDateTime birthday) {
-        this.birthday = birthday;
+    public void setBirthdate(LocalDateTime birthdate) {
+        this.birthdate = birthdate;
     }
 
     public String getPhone() {
