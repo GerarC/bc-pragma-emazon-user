@@ -1,6 +1,7 @@
 package com.emazon.user.adapters.driven.jpa.entity;
 
 import jakarta.persistence.*;
+import jakarta.transaction.Transactional;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -17,7 +18,6 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class UserEntity implements Serializable, UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -45,19 +45,19 @@ public class UserEntity implements Serializable, UserDetails {
     @Column(name = "password")
     private String password;
 
-    @ManyToOne(cascade = {
-            CascadeType.MERGE,
-    })
-    @JoinColumn(name="role_id", referencedColumnName = "role_id")
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JoinColumn(name = "role_id", referencedColumnName = "role_id")
     private RoleEntity role;
 
     @Override
+    @Transactional
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("ROLE_" + getRole().getRoleName().name()));
     }
 
     @Override
+    @Transactional
     public String getUsername() {
-        return "";
+        return this.email;
     }
 }

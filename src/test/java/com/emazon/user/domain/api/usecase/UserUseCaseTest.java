@@ -68,4 +68,14 @@ class UserUseCaseTest {
                 () -> userUseCase.createWarehouseAssistant(user));
         verify(userPersistencePort, times(0)).createUser(any());
     }
+
+    @Test
+    void getUserByEmail() {
+        String email = "email@email.com";
+        User user = new User("XD", "name", "lastname", "0000000000", LocalDateTime.now(), "+5555555555555", "email@email.com", "password", null);
+        when(userPersistencePort.getUserByEmail(email)).thenReturn(user);
+        User returnedUser = userUseCase.getUserByEmail(email);
+        assertEquals(user.getId(), returnedUser.getId());
+        verify(userPersistencePort).getUserByEmail(any());
+    }
 }

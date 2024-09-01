@@ -1,5 +1,6 @@
 package com.emazon.user.configuration.security.jwt;
 
+import com.emazon.user.configuration.security.jwt.exceptions.InvalidTokenException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
@@ -26,6 +27,7 @@ public class JwtService {
     private Integer expirationTime;
 
     public String generateToken(Map<String, String> claims, UserDetails userDetails) {
+        log.info("Generating token for user: {}", userDetails.getUsername());
         return Jwts.builder()
                 .subject(userDetails.getUsername())
                 .claims(claims)
@@ -49,16 +51,15 @@ public class JwtService {
     }
 
     public boolean isTokenValid(String token, UserDetails userDetails) {
-        final String username = getClaim(token, Claims::getSubject);
-        return username.equals(userDetails.getUsername());
+            final String username = getClaim(token, Claims::getSubject);
+            return username.equals(userDetails.getUsername());
     }
 
     private Claims extractAllClaims(String token){
         try{
             return Jwts.parser().verifyWith((SecretKey) getSignatureKey()).build().parseSignedClaims(token).getPayload();
         } catch (SecurityException e) {
-            log.error(e.getMessage());
-            return Jwts.claims().build();
+            throw new InvalidTokenException();
         }
     }
 }
