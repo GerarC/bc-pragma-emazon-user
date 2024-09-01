@@ -68,7 +68,6 @@ class AuthControllerTest {
                 .andExpect(content().json(JsonParser.toJson(response)))
                 .andExpect(status().isCreated());
         verify(authenticationService).createWarehouseAssistant(any());
-
     }
 
     @Test
@@ -103,5 +102,17 @@ class AuthControllerTest {
                 .andExpect(content().json(JsonParser.toJson(mockResponse)))
                 .andExpect(status().isAccepted());
         verify(authenticationService).authorize(request);
+    }
+
+    @Test
+    void registerCustomer() throws Exception {
+        UserRequest userRequest = new UserRequest("name", "lastname", "0000000000", LocalDateTime.of(1, 1, 1, 1, 1, 1), "+555555555555", "email@email.com", "password");
+        RegisterResponse response = RegisterResponse.builder().status(DomainConstants.CUSTOMER_REGISTERED_MESSAGE).build();
+        when(authenticationService.createWarehouseAssistant(any())).thenReturn(response);
+        this.mockMvc.perform(post("/auth/register/customer")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(JsonParser.toJson(userRequest)))
+                .andExpect(status().isCreated());
+        verify(authenticationService).createCustomer(any());
     }
 }

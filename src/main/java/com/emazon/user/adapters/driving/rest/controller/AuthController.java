@@ -39,6 +39,21 @@ public class AuthController {
                 .body(authenticationService.createWarehouseAssistant(userRequest));
     }
 
+    @Operation(summary = "Register a new warehouse assistant")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Customer has been registered"),
+            @ApiResponse(responseCode = "409", description = "Customer with that email already exists"),
+            @ApiResponse(responseCode = "409", description = "Customer with that identity document already exists"),
+            @ApiResponse(responseCode = "409", description = "Customer is under aged"),
+            @ApiResponse(responseCode = "400", description = "Some of the field doesn't pass validations"),
+    })
+    @PostMapping("/register/customer")
+    @PreAuthorize("hasAnyRole('ADMIN')")
+    public ResponseEntity<RegisterResponse> registerCustomer(@RequestBody @Valid UserRequest userRequest){
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(authenticationService.createCustomer(userRequest));
+    }
+
     @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> login(@RequestBody @Valid AuthenticationRequest authenticationRequest){
         return ResponseEntity.accepted().body(authenticationService.login(authenticationRequest));

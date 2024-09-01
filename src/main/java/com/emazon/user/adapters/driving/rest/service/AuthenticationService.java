@@ -9,6 +9,7 @@ import com.emazon.user.adapters.driving.rest.dto.response.RegisterResponse;
 
 public interface AuthenticationService {
     RegisterResponse createWarehouseAssistant(UserRequest userRequest);
+    RegisterResponse createCustomer(UserRequest userRequest);
     AuthenticationResponse login(AuthenticationRequest authenticationRequest);
     AuthorizationResponse authorize(AuthorizationRequest authorizationRequest);
 }

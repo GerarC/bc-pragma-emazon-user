@@ -5,17 +5,6 @@ public class DomainConstants {
         throw new IllegalStateException("Utility class");
     }
 
-    public enum Field {
-        NAME,
-        LASTNAME,
-        EMAIL,
-        PHONE_NUMBER,
-        BIRTH_DATE,
-        IDENTITY_DOCUMENT,
-        PASSWORD
-    }
-
-
     public static final String USER_EMAIL_ALREADY_EXISTS_MESSAGE = "User with email %s already exists";
     public static final String USER_DOCUMENT_ALREADY_EXISTS_MESSAGE = "User with document %s already exists";
 
@@ -31,6 +20,7 @@ public class DomainConstants {
     public static final String IDENTITY_DOCUMENT_REGEX = "^\\d{6,16}";
 
     public static final String WAREHOUSE_ASSISTANT_REGISTERED_MESSAGE = "Warehouse Assistant registered successfully";
+    public static final String CUSTOMER_REGISTERED_MESSAGE = "Customer registered successfully";
 
     // Empty
     public static final String EMPTY_NAME_MESSAGE = "'name' field cannot be empty";

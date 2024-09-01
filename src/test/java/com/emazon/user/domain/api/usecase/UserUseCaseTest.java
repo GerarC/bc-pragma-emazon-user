@@ -78,4 +78,13 @@ class UserUseCaseTest {
         assertEquals(user.getId(), returnedUser.getId());
         verify(userPersistencePort).getUserByEmail(any());
     }
+
+    @Test
+    void createCustomer() {
+        User user = new User("", "name", "lastname", "0000000000", LocalDateTime.of(1,1,1,1,1,1), "+5555555555555", "email@email.com", "password", null);
+        when(userPersistencePort.userExistsByEmail(any())).thenReturn(false);
+        when(userPersistencePort.userExistsByIdentityDocument(any())).thenReturn(false);
+        userUseCase.createCustomer(user);
+        verify(userPersistencePort).createUser(any());
+    }
 }

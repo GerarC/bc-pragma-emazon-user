@@ -34,6 +34,14 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     }
 
     @Override
+    public RegisterResponse createCustomer(UserRequest userRequest) {
+        User user = userRequestMapper.toUser(userRequest);
+        user.setPassword(passwordEncoder.encode(userRequest.getPassword()));
+        userServicePort.createCustomer(user);
+        return RegisterResponse.builder().status(DomainConstants.CUSTOMER_REGISTERED_MESSAGE).build();
+    }
+
+    @Override
     public AuthenticationResponse login(AuthenticationRequest authenticationRequest) {
         return authService.authenticate(authenticationRequest);
     }

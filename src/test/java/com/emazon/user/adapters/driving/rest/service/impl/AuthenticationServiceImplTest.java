@@ -86,4 +86,17 @@ class AuthenticationServiceImplTest {
         verify(authService).authorize(any());
         assertEquals(mockResponse.isAuthorized(), response.isAuthorized());
     }
+
+    @Test
+    void createCustomer() {
+        UserRequest userRequest = new UserRequest("name", "lastname", "0000000000", LocalDateTime.of(1,1,1,1,1,1), "+5555555555555", "email@email.com", "password");
+        User user = new User(null, "name", "lastname", "0000000000", LocalDateTime.of(1,1,1,1,1,1), "+5555555555555", "email@email.com", "encrypted", null);
+        when(userRequestMapper.toUser(userRequest)).thenReturn(user);
+        when(passwordEncoder.encode("password")).thenReturn("encrypted");
+        doNothing().when(userServicePort).createCustomer(user);
+        RegisterResponse response = userService.createCustomer(userRequest);
+        verify(userServicePort).createCustomer(any());
+        assertNotNull(response);
+        assertEquals(DomainConstants.CUSTOMER_REGISTERED_MESSAGE, response.getStatus());
+    }
 }
