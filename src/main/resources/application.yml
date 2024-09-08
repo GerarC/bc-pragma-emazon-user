@@ -1,0 +1,9 @@
+spring:
+    application:
+        name: user
+    profiles:
+        active: local
+
+app:
+    description: "Emazon's User Microservice API"
+    version: "0.0.1"
