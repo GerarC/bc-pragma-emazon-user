@@ -1,6 +1,6 @@
 package com.emazon.user.configuration.security.jwt;
 
-import com.emazon.user.configuration.security.jwt.exceptions.InvalidTokenException;
+import com.emazon.user.configuration.security.exceptions.InvalidTokenException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;

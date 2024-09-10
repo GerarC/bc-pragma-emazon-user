@@ -9,6 +9,7 @@ import com.emazon.user.adapters.driving.rest.dto.response.RegisterResponse;
 import com.emazon.user.adapters.driving.rest.mapper.request.UserRequestMapper;
 import com.emazon.user.adapters.driving.rest.service.AuthenticationService;
 import com.emazon.user.configuration.security.AuthService;
+import com.emazon.user.configuration.security.exceptions.UnauthorizedException;
 import com.emazon.user.domain.api.UserServicePort;
 import com.emazon.user.domain.model.User;
 import com.emazon.user.domain.utils.DomainConstants;
@@ -43,7 +44,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public AuthenticationResponse login(AuthenticationRequest authenticationRequest) {
-        return authService.authenticate(authenticationRequest);
+        try {
+            return authService.authenticate(authenticationRequest);
+        } catch (Exception e) {
+            throw new UnauthorizedException();
+        }
     }
 
     @Override

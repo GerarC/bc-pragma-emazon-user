@@ -2,6 +2,7 @@ package com.emazon.user.configuration.advice;
 
 import com.emazon.user.configuration.advice.responses.ExceptionResponse;
 import com.emazon.user.configuration.advice.responses.ValidationExceptionResponse;
+import com.emazon.user.configuration.security.exceptions.UnauthorizedException;
 import com.emazon.user.domain.exceptions.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,6 +40,12 @@ public class ExceptionAdvisor {
 
     @ExceptionHandler(EmptyFieldException.class)
     public ResponseEntity<ExceptionResponse> handleEmptyFieldException(EmptyFieldException e) {
+        ExceptionResponse exceptionResponse = createExceptionResponse(HttpStatus.BAD_REQUEST, e.getMessage());
+        return ResponseEntity.status(exceptionResponse.getStatusCode()).body(exceptionResponse);
+    }
+
+    @ExceptionHandler(UnauthorizedException.class)
+    public ResponseEntity<ExceptionResponse> handleUnauthorizedException(UnauthorizedException e) {
         ExceptionResponse exceptionResponse = createExceptionResponse(HttpStatus.BAD_REQUEST, e.getMessage());
         return ResponseEntity.status(exceptionResponse.getStatusCode()).body(exceptionResponse);
     }

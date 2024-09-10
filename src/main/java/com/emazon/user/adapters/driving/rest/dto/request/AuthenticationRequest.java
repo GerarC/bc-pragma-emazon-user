@@ -17,6 +17,5 @@ public class AuthenticationRequest {
     private String email;
 
     @NotNull(message = DomainConstants.EMPTY_PASSWORD_MESSAGE)
-    @Size(min = 8, max = 64, message = DomainConstants.OUT_OF_BOUNDS_PASSWORD_MESSAGE)
     private String password;
 }

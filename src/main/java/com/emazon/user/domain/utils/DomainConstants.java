@@ -46,4 +46,6 @@ public class DomainConstants {
 
     public static final String USER_WITH_EMAIL_NOT_FOUND_MESSAGE = "User with email '%s' not found";
     public static final String INVALID_TOKEN_MESSAGE = "Authorization token is invalid";
+
+    public static final String INVALID_USER_OR_PASSWORD_MESSAGE = "User email or password incorrect";
 }

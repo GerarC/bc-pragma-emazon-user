@@ -7,7 +7,7 @@ import com.emazon.user.adapters.driving.rest.dto.request.AuthorizationRequest;
 import com.emazon.user.adapters.driving.rest.dto.response.AuthenticationResponse;
 import com.emazon.user.adapters.driving.rest.dto.response.AuthorizationResponse;
 import com.emazon.user.configuration.security.jwt.JwtService;
-import com.emazon.user.configuration.security.jwt.exceptions.InvalidTokenException;
+import com.emazon.user.configuration.security.exceptions.InvalidTokenException;
 import com.emazon.user.domain.exceptions.UserWithEmailNotFoundException;
 import io.jsonwebtoken.Claims;
 import lombok.AllArgsConstructor;

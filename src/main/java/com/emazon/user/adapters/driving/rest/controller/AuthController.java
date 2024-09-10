@@ -7,6 +7,7 @@ import com.emazon.user.adapters.driving.rest.dto.response.AuthenticationResponse
 import com.emazon.user.adapters.driving.rest.dto.response.AuthorizationResponse;
 import com.emazon.user.adapters.driving.rest.dto.response.RegisterResponse;
 import com.emazon.user.adapters.driving.rest.service.AuthenticationService;
+import com.emazon.user.adapters.driving.rest.utils.RestConstants;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -24,13 +25,13 @@ public class AuthController {
 
     private final AuthenticationService authenticationService;
 
-    @Operation(summary = "Register a new warehouse assistant")
+    @Operation(summary = RestConstants.SWAGGER_REGISTER_WAREHOUSE_ASSISTANT_SUMMARY)
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Assistant has been registered"),
-            @ApiResponse(responseCode = "409", description = "User with that email already exists"),
-            @ApiResponse(responseCode = "409", description = "User with that identity document already exists"),
-            @ApiResponse(responseCode = "409", description = "User is under aged"),
-            @ApiResponse(responseCode = "400", description = "Some of the field doesn't pass validations"),
+            @ApiResponse(responseCode = RestConstants.CODE_CREATED, description = RestConstants.SWAGGER_REGISTER_WAREHOUSE_ASSISTANT_RESPONSE),
+            @ApiResponse(responseCode = RestConstants.CODE_CONFLICT, description = RestConstants.SWAGGER_REGISTER_USER_EMAIL_EXISTS),
+            @ApiResponse(responseCode = RestConstants.CODE_CONFLICT, description = RestConstants.SWAGGER_REGISTER_USER_IDENTITY_DOCUMENT_EXISTS),
+            @ApiResponse(responseCode = RestConstants.CODE_CONFLICT, description = RestConstants.SWAGGER_REGISTER_USER_UNDERAGE),
+            @ApiResponse(responseCode = RestConstants.CODE_BAD_REQUEST, description = RestConstants.SWAGGER_VALIDATIONS_DONT_PASS),
     })
     @PostMapping("/register/warehouse-assistant")
     @PreAuthorize("hasAnyRole('ADMIN')")
@@ -39,13 +40,13 @@ public class AuthController {
                 .body(authenticationService.createWarehouseAssistant(userRequest));
     }
 
-    @Operation(summary = "Register a new warehouse assistant")
+    @Operation(summary = RestConstants.SWAGGER_REGISTER_CUSTOMER_SUMMARY)
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Customer has been registered"),
-            @ApiResponse(responseCode = "409", description = "Customer with that email already exists"),
-            @ApiResponse(responseCode = "409", description = "Customer with that identity document already exists"),
-            @ApiResponse(responseCode = "409", description = "Customer is under aged"),
-            @ApiResponse(responseCode = "400", description = "Some of the field doesn't pass validations"),
+            @ApiResponse(responseCode = RestConstants.CODE_CREATED, description = RestConstants.SWAGGER_REGISTER_CUSTOMER_RESPONSE),
+            @ApiResponse(responseCode = RestConstants.CODE_CONFLICT, description = RestConstants.SWAGGER_REGISTER_USER_EMAIL_EXISTS),
+            @ApiResponse(responseCode = RestConstants.CODE_CONFLICT, description = RestConstants.SWAGGER_REGISTER_USER_IDENTITY_DOCUMENT_EXISTS),
+            @ApiResponse(responseCode = RestConstants.CODE_CONFLICT, description = RestConstants.SWAGGER_REGISTER_USER_UNDERAGE),
+            @ApiResponse(responseCode = RestConstants.CODE_BAD_REQUEST, description = RestConstants.SWAGGER_VALIDATIONS_DONT_PASS),
     })
     @PostMapping("/register/customer")
     @PreAuthorize("hasAnyRole('ADMIN')")
@@ -54,11 +55,22 @@ public class AuthController {
                 .body(authenticationService.createCustomer(userRequest));
     }
 
+    @Operation(summary = RestConstants.SWAGGER_LOGIN_SUMMARY)
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = RestConstants.CODE_ACCEPTED, description = RestConstants.SWAGGER_LOGIN_RESPONSE),
+            @ApiResponse(responseCode = RestConstants.CODE_BAD_REQUEST, description = RestConstants.SWAGGER_LOGIN_ERROR),
+            @ApiResponse(responseCode = RestConstants.CODE_BAD_REQUEST, description = RestConstants.SWAGGER_VALIDATIONS_DONT_PASS),
+    })
     @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> login(@RequestBody @Valid AuthenticationRequest authenticationRequest){
         return ResponseEntity.accepted().body(authenticationService.login(authenticationRequest));
     }
 
+    @Operation(summary = RestConstants.SWAGGER_AUTHORIZATION_SUMMARY)
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = RestConstants.CODE_ACCEPTED, description = RestConstants.SWAGGER_AUTHORIZATION_RESPONSE),
+            @ApiResponse(responseCode = RestConstants.CODE_BAD_REQUEST, description = RestConstants.SWAGGER_VALIDATIONS_DONT_PASS),
+    })
     @PostMapping("/authorize")
     public ResponseEntity<AuthorizationResponse> authorize(@RequestBody @Valid AuthorizationRequest authorizationRequest){
         return ResponseEntity.accepted().body(authenticationService.authorize(authorizationRequest));
