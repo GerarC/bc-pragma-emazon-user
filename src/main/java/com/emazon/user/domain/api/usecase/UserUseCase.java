@@ -41,4 +41,9 @@ public class UserUseCase implements UserServicePort {
     public User getUserByEmail(String email) {
         return userPersistencePort.getUserByEmail(email);
     }
+
+    @Override
+    public boolean userExistsById(String id) {
+        return userPersistencePort.userExistsById(id);
+    }
 }

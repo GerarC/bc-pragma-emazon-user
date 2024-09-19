@@ -5,6 +5,7 @@ public class RestConstants {
         throw new IllegalStateException("Utility class");
     }
 
+    public static final String CODE_OK = "200";
     public static final String CODE_CREATED = "201";
     public static final String CODE_ACCEPTED = "202";
     public static final String CODE_CONFLICT = "409";
@@ -27,5 +28,8 @@ public class RestConstants {
     public static final String SWAGGER_AUTHORIZATION_SUMMARY = "Receives a token, validates it and returns email and rol";
     public static final String SWAGGER_AUTHORIZATION_RESPONSE = "An object with the email, rol and a boolean if it's validated";
 
+
+    public static final String SWAGGER_USER_EXISTS_SUMMARY = "Return if a user with that id exists";
+    public static final String SWAGGER_USER_EXISTS_RESPONSE = "The response can be false or true";
 
 }
