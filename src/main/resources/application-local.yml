@@ -1,8 +1,8 @@
 spring:
     datasource:
-        url: ${SPRING_STOCK_DATASOURCE_URL:jdbc:mysql://localhost:3309/user}
-        username: ${SPRING_STOCK_DATASOURCE_USERNAME:root}
-        password: ${SPRING_STOCK_DATASOURCE_PASSWORD:password}
+        url: ${SPRING_USER_DATASOURCE_URL:jdbc:mysql://localhost:3306/user}
+        username: ${SPRING_USER_DATASOURCE_USERNAME:root}
+        password: ${SPRING_USER_DATASOURCE_PASSWORD:password}
         driver-class-name: com.mysql.cj.jdbc.Driver
 
     jpa:
