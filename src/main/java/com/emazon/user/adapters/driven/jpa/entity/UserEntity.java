@@ -16,6 +16,7 @@ import java.util.List;
 @Table(name = "user")
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserEntity implements Serializable, UserDetails {
@@ -45,7 +46,7 @@ public class UserEntity implements Serializable, UserDetails {
     @Column(name = "password")
     private String password;
 
-    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id", referencedColumnName = "role_id")
     private RoleEntity role;
 
