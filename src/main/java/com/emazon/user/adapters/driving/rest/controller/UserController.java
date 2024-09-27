@@ -1,6 +1,7 @@
 package com.emazon.user.adapters.driving.rest.controller;
 
 import com.emazon.user.adapters.driving.rest.dto.response.ExistsUserResponse;
+import com.emazon.user.adapters.driving.rest.dto.response.UserResponse;
 import com.emazon.user.adapters.driving.rest.service.UserService;
 import com.emazon.user.adapters.driving.rest.utils.RestConstants;
 import io.swagger.v3.oas.annotations.Operation;
@@ -10,10 +11,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user")
@@ -31,5 +29,19 @@ public class UserController {
     @GetMapping("/{id}/exist")
     public ResponseEntity<ExistsUserResponse> existsUserById(@PathVariable String id) {
         return ResponseEntity.ok(userService.existsUserById(id));
+    }
+
+    @Operation(summary = RestConstants.SWAGGER_GET_USER_BY_TOKEN_SUMMARY)
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = RestConstants.CODE_OK,
+                    description = RestConstants.SWAGGER_GET_USER_BY_TOKEN_RESPONSE,
+                    content = @Content(schema = @Schema(implementation = UserResponse.class)))
+    })
+    @GetMapping("/token")
+    public ResponseEntity<UserResponse> getUserByToken(@RequestHeader("Authorization") String token) {
+        return ResponseEntity.ok(userService.getByToken(
+                token.substring(RestConstants.TOKEN_PREFIX_SIZE)
+        ));
     }
 }

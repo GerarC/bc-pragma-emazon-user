@@ -32,4 +32,8 @@ public class RestConstants {
     public static final String SWAGGER_USER_EXISTS_SUMMARY = "Return if a user with that id exists";
     public static final String SWAGGER_USER_EXISTS_RESPONSE = "The response can be false or true";
 
+    public static final String SWAGGER_GET_USER_BY_TOKEN_SUMMARY = "Get a user by their token";
+    public static final String SWAGGER_GET_USER_BY_TOKEN_RESPONSE = "Found user";
+
+    public static final Integer TOKEN_PREFIX_SIZE = 7;
 }
