@@ -1,6 +1,6 @@
-package com.emazon.user.adapters.driving.rest.utils;
+package com.emazon.user.adapters.driving.rest.v1.utils;
 
-import com.emazon.user.adapters.driving.rest.utils.exceptions.JsonParseException;
+import com.emazon.user.adapters.driving.rest.v1.utils.exceptions.JsonParseException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 

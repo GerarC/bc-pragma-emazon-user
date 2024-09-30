@@ -2,10 +2,10 @@ package com.emazon.user.configuration.security;
 
 import com.emazon.user.adapters.driven.jpa.entity.UserEntity;
 import com.emazon.user.adapters.driven.jpa.persistence.UserRepository;
-import com.emazon.user.adapters.driving.rest.dto.request.AuthenticationRequest;
-import com.emazon.user.adapters.driving.rest.dto.request.AuthorizationRequest;
-import com.emazon.user.adapters.driving.rest.dto.response.AuthenticationResponse;
-import com.emazon.user.adapters.driving.rest.dto.response.AuthorizationResponse;
+import com.emazon.user.adapters.driving.rest.v1.dto.request.AuthenticationRequest;
+import com.emazon.user.adapters.driving.rest.v1.dto.request.AuthorizationRequest;
+import com.emazon.user.adapters.driving.rest.v1.dto.response.AuthenticationResponse;
+import com.emazon.user.adapters.driving.rest.v1.dto.response.AuthorizationResponse;
 import com.emazon.user.configuration.security.jwt.JwtService;
 import com.emazon.user.configuration.security.exceptions.InvalidTokenException;
 import com.emazon.user.domain.exceptions.UserWithEmailNotFoundException;

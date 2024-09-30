@@ -1,6 +1,6 @@
-package com.emazon.user.adapters.driving.rest.mapper.request;
+package com.emazon.user.adapters.driving.rest.v1.mapper.request;
 
-import com.emazon.user.adapters.driving.rest.dto.request.UserRequest;
+import com.emazon.user.adapters.driving.rest.v1.dto.request.UserRequest;
 import com.emazon.user.domain.model.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;

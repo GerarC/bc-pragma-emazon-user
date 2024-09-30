@@ -1,4 +1,4 @@
-package com.emazon.user.adapters.driving.rest.dto.request;
+package com.emazon.user.adapters.driving.rest.v1.dto.request;
 
 import com.emazon.user.domain.utils.DomainConstants;
 import jakarta.validation.constraints.NotNull;

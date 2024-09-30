@@ -1,9 +1,9 @@
-package com.emazon.user.adapters.driving.rest.controller;
+package com.emazon.user.adapters.driving.rest.v1.controller;
 
-import com.emazon.user.adapters.driving.rest.dto.response.ExistsUserResponse;
-import com.emazon.user.adapters.driving.rest.dto.response.UserResponse;
-import com.emazon.user.adapters.driving.rest.service.UserService;
-import com.emazon.user.adapters.driving.rest.utils.RestConstants;
+import com.emazon.user.adapters.driving.rest.v1.dto.response.ExistsUserResponse;
+import com.emazon.user.adapters.driving.rest.v1.dto.response.UserResponse;
+import com.emazon.user.adapters.driving.rest.v1.service.UserService;
+import com.emazon.user.adapters.driving.rest.v1.utils.RestConstants;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -14,7 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/v1/user")
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;

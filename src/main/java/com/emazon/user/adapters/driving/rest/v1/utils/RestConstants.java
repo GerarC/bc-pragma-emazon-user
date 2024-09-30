@@ -1,4 +1,4 @@
-package com.emazon.user.adapters.driving.rest.utils;
+package com.emazon.user.adapters.driving.rest.v1.utils;
 
 public class RestConstants {
     private RestConstants() {

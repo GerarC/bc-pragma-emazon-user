@@ -1,4 +1,4 @@
-package com.emazon.user.adapters.driving.rest.dto.response;
+package com.emazon.user.adapters.driving.rest.v1.dto.response;
 
 import lombok.*;
 
@@ -10,4 +10,5 @@ import lombok.*;
 @Builder
 public class UserResponse {
     String id;
+    String email;
 }

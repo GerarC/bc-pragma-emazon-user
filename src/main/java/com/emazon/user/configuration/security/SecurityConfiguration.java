@@ -45,8 +45,8 @@ public class SecurityConfiguration {
             "/swagger-ui/**",
 
             // Authentication
-            "/auth/login",
-            "/auth/authorize"
+            "/v1/auth/login",
+            "/v1/auth/authorize"
     };
 
     @Bean

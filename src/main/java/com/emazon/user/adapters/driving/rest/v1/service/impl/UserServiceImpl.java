@@ -1,9 +1,9 @@
-package com.emazon.user.adapters.driving.rest.service.impl;
+package com.emazon.user.adapters.driving.rest.v1.service.impl;
 
-import com.emazon.user.adapters.driving.rest.dto.response.ExistsUserResponse;
-import com.emazon.user.adapters.driving.rest.dto.response.UserResponse;
-import com.emazon.user.adapters.driving.rest.mapper.response.UserResponseMapper;
-import com.emazon.user.adapters.driving.rest.service.UserService;
+import com.emazon.user.adapters.driving.rest.v1.dto.response.ExistsUserResponse;
+import com.emazon.user.adapters.driving.rest.v1.dto.response.UserResponse;
+import com.emazon.user.adapters.driving.rest.v1.mapper.response.UserResponseMapper;
+import com.emazon.user.adapters.driving.rest.v1.service.UserService;
 import com.emazon.user.configuration.security.jwt.JwtService;
 import com.emazon.user.domain.api.UserServicePort;
 import com.emazon.user.domain.model.User;

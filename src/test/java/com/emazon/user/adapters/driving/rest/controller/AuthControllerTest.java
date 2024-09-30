@@ -1,13 +1,14 @@
 package com.emazon.user.adapters.driving.rest.controller;
 
-import com.emazon.user.adapters.driving.rest.dto.request.AuthenticationRequest;
-import com.emazon.user.adapters.driving.rest.dto.request.AuthorizationRequest;
-import com.emazon.user.adapters.driving.rest.dto.request.UserRequest;
-import com.emazon.user.adapters.driving.rest.dto.response.AuthenticationResponse;
-import com.emazon.user.adapters.driving.rest.dto.response.AuthorizationResponse;
-import com.emazon.user.adapters.driving.rest.dto.response.RegisterResponse;
-import com.emazon.user.adapters.driving.rest.service.AuthenticationService;
-import com.emazon.user.adapters.driving.rest.utils.JsonParser;
+import com.emazon.user.adapters.driving.rest.v1.controller.AuthController;
+import com.emazon.user.adapters.driving.rest.v1.dto.request.AuthenticationRequest;
+import com.emazon.user.adapters.driving.rest.v1.dto.request.AuthorizationRequest;
+import com.emazon.user.adapters.driving.rest.v1.dto.request.UserRequest;
+import com.emazon.user.adapters.driving.rest.v1.dto.response.AuthenticationResponse;
+import com.emazon.user.adapters.driving.rest.v1.dto.response.AuthorizationResponse;
+import com.emazon.user.adapters.driving.rest.v1.dto.response.RegisterResponse;
+import com.emazon.user.adapters.driving.rest.v1.service.AuthenticationService;
+import com.emazon.user.adapters.driving.rest.v1.utils.JsonParser;
 import com.emazon.user.configuration.security.jwt.JwtService;
 import com.emazon.user.domain.utils.DomainConstants;
 import org.junit.jupiter.api.BeforeEach;

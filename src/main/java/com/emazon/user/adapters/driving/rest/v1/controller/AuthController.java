@@ -1,13 +1,13 @@
-package com.emazon.user.adapters.driving.rest.controller;
+package com.emazon.user.adapters.driving.rest.v1.controller;
 
-import com.emazon.user.adapters.driving.rest.dto.request.AuthenticationRequest;
-import com.emazon.user.adapters.driving.rest.dto.request.AuthorizationRequest;
-import com.emazon.user.adapters.driving.rest.dto.request.UserRequest;
-import com.emazon.user.adapters.driving.rest.dto.response.AuthenticationResponse;
-import com.emazon.user.adapters.driving.rest.dto.response.AuthorizationResponse;
-import com.emazon.user.adapters.driving.rest.dto.response.RegisterResponse;
-import com.emazon.user.adapters.driving.rest.service.AuthenticationService;
-import com.emazon.user.adapters.driving.rest.utils.RestConstants;
+import com.emazon.user.adapters.driving.rest.v1.dto.request.AuthenticationRequest;
+import com.emazon.user.adapters.driving.rest.v1.dto.request.AuthorizationRequest;
+import com.emazon.user.adapters.driving.rest.v1.dto.request.UserRequest;
+import com.emazon.user.adapters.driving.rest.v1.dto.response.AuthenticationResponse;
+import com.emazon.user.adapters.driving.rest.v1.dto.response.AuthorizationResponse;
+import com.emazon.user.adapters.driving.rest.v1.dto.response.RegisterResponse;
+import com.emazon.user.adapters.driving.rest.v1.service.AuthenticationService;
+import com.emazon.user.adapters.driving.rest.v1.utils.RestConstants;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -19,7 +19,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/v1/auth")
 @RequiredArgsConstructor
 public class AuthController {
 
